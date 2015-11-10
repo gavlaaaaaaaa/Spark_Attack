@@ -1,0 +1,43 @@
+import org.apache.spark.{SparkConf, SparkContext}
+import scala.io.Source
+
+//Change tweet file to be uppercase
+//val sc = new SparkContext()
+
+//create RDD from hdfs file
+val tweets = sc.textFile("hdfs://localhost/CompanyTweets.txt")
+tweets.foreach(println)
+
+//remove non-alphanumerial characters and conver to upper case
+val CleanTweets = tweets.map(line => line.toUpperCase).map {_.replaceAll("[^A-Z0-9]", " ")}.take(14)
+
+//val output = CleanTweets.map
+
+//read ListOfCompanies file
+val CompanyFile = "/home/training/ListOfCompanies.txt"
+val CompanyList = Source.fromFile(CompanyFile).getLines.toList
+
+//Filter on the list of companies
+val targetGroupTweets = CleanTweets.filter(line => CompanyList.count(line.contains(_)) > 0)
+
+targetGroupTweets.take(10).foreach(println)
+
+//filter on list of positive words
+val PosFile = "/home/training/PositiveWords.txt"
+val PosList = Source.fromFile(PosFile).getLines.toList
+
+val PosFtseTweets = targetGroupTweets.filter(line => PosList.count(line.contains(_)) > 0)
+
+PosFtseTweets.take(10).foreach(println)
+
+//Get Occurance of FTSE companies in positive tweets
+val FtseOcurrance =PosFtseTweets.flatMap(_.split("\\W+")).filter(CompanyList.contains(_)).groupBy(word=>word).mapValues(_.size)
+
+println(FtseOcurrance)
+
+//import ListMap function to sort FTSE companies by their count of occurance
+import scala.collection.immutable.ListMap
+
+ListMap(FtseOcurrance.toSeq.sortWith(_._2 > _._2):_*)
+                                                                                                                                              43,1          Bot
+                                                                                                                                              5,1           Top
