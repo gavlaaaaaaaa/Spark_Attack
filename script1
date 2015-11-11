@@ -1,0 +1,66 @@
+import org.apache.spark.{SparkConf, SparkContext}
+import scala.io.Source
+
+//Change tweet file to be uppercase
+//val sc = new SparkContext()
+
+//create RDD from hdfs file
+val tweets = sc.textFile("hdfs://localhost/CompanyTweets.txt")
+tweets.foreach(println)
+
+//remove non-alphanumerial characters and conver to upper case
+val CleanTweets = tweets.map(line => line.toUpperCase).map {_.replaceAll("[^A-Z0-9]", " ")}.take(14)
+
+//val output = CleanTweets.map
+
+//read ListOfCompanies file
+val CompanyFile = "/home/training/ListOfCompanies.txt"
+val CompanyList = Source.fromFile(CompanyFile).getLines.toList
+
+//Filter on the list of companies
+val targetGroupTweets = CleanTweets.filter(line => CompanyList.count(line.contains(_)) > 0)
+
+targetGroupTweets.take(10).foreach(println)
+
+//filter on list of positive words
+val PosFile = "/home/training/PositiveWords.txt"
+val PosList = Source.fromFile(PosFile).getLines.toList
+
+val PosFtseTweets = targetGroupTweets.filter(line => PosList.count(line.contains(_)) > 0)
+
+PosFtseTweets.take(10).foreach(println)
+
+
+//filter on list of negative words
+val NegFile = "/home/training/NegativeWords.txt"
+val NegList = Source.fromFile(NegFile).getLines.toList
+
+val NegFtseTweets = targetGroupTweets.filter(line => NegList.count(line.contains(_)) > 0)
+
+NegFtseTweets.take(10).foreach(println)
+
+//Get Occurance of FTSE companies in positive tweets
+val PosFtseOcurrance = PosFtseTweets.flatMap(_.split("\\W+")).filter(CompanyList.contains(_)).foldLeft(Map.empty[String, Int]){
+(count, word) => count + (word -> (count.getOrElse(word, 0) +1))
+}
+
+println(PosFtseOcurrance)
+
+//import ListMap function to sort FTSE companies by their count of occurance
+import scala.collection.immutable.ListMap
+
+ListMap(PosFtseOcurrance.toSeq.sortWith(_._2 > _._2):_*)
+
+//Get Occurance of FTSE companies in negitive tweets
+val NegFtseOcurrance = NegFtseTweets.flatMap(_.split("\\W+")).filter(CompanyList.contains(_)).foldLeft(Map.empty[String, Int]){
+(count, word) => count + (word -> (count.getOrElse(word, 0) +1))
+}
+
+println(NegFtseOcurrance)
+
+//Get final output of list in format: Company(Pos count, negative count)
+val list = PosFtseOcurrance.toList ++ NegFtseOcurrance.toList
+val mergeList = list.groupBy(_._1).map{case(k,v) => k-> v.map(_._2).toSeq}
+
+//Get positive reference - negative reference DOES NOT WORK FOR NEGATIVE VALUES
+val PosMinusNeg = PosFtseOcurrance ++ NegFtseOcurrance.map{ case (k,v) => k -> (v - NegFtseOcurrance.getOrElse(k,0))}
