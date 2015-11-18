@@ -1,0 +1,14 @@
+//Converts a file to a string split on space
+//creates n=3 grams and sorts in order of occurance
+
+//val words = "Tesco prices Tesco Tesco Tesco prices makes a lot of people happy well mostly happy happy"
+
+val words = scala.io.Source.fromFile("/home/training/Spark_Attack/Data/Tesco.txt").mkString
+val w = words.split(" ")
+val n = 3
+val ngrams = (for( i <- 1 to n) yield w.sliding(i).map(p => p.toList)).flatMap(x=>x).groupBy(x=>x).mapValues{_.size}
+
+//import ListMap function to order by the count
+import scala.collection.immutable.ListMap
+ListMap(ngrams.toSeq.sortWith(_._2 > _._2):_*)
+

@@ -1,0 +1,9 @@
+// Escape Quotes \\Q and \\E treat anything in between as literal
+
+val TESCO = "TESCO makes me :)"
+
+val newTesco = TESCO.replaceAll("\\Q:)\\E", "happy")
+
+val smileys = ":) :D ;') :-) :o) :] :3 :c) :> =] :} :^) :???)"
+
+val repSmileys = smileys.replaceAll("\\Q:)\\E|\\Q:D\\E|\\Q;')\\E|\\Q:-)\\E|\\Q:o)\\E|\\Q:]\\E|\\Q:3\\E|\\Q:c)\\E|\\Q:>\\E|\\Q=]\\E|\\Q:}\\E|\\Q:^)\\E|\\Q:???)\\E", "happy")

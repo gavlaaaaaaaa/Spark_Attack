@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Spark Attack</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+	<style>
+		.container {padding: 30px 120px;}
+
+
+		.person {
+			border: 10px solid transparent;
+			margin-bottom: 25px;
+			width: 80%;
+			height: 80%;
+			opacity: 0.7;
+		}
+
+		.person:hover {border-color: #f1f1f1;}
+
+		.bg-1 {
+			background: #2d2d30;
+			color: #bdbdbd;
+		}
+
+		.navbar {
+			margin-bottom: 0;
+			background-color: #2d2d30;
+			border: 0;
+			font-size: 11px !important;
+			letter-spacing: 4px;
+			opacity:0.9;
+		}
+
+		.navbar li a, .navbar .navbar-brand { 
+			color: #d5d5d5 !important;
+		}
+
+		.navbar-nav li a:hover {
+			color: #fff !important;
+		}
+
+
+		.navbar-nav li.active a {
+			color: #fff !important;
+			background-color:#29292c !important;
+		}
+
+		.navbar-default .navbar-toggle {
+			border-color: transparent;
+		}
+
+		.open .dropdown-toggle {
+			color: #fff ;
+			background-color: #555 !important;
+		}
+
+		.dropdown-menu li a {
+			color: #000 !important;
+		}
+
+
+		.dropdown-menu li a:hover {
+			background-color: #2d2d30;
+		}
+
+
+
+
+
+		.bg-1 { 
+			background-color: #1abc9c;
+			color: #ffffff;
+		}
+		.bg-2 { 
+			background-color: #474e5d;
+			color: #ffffff;
+		}
+		.bg-3 { 
+			background-color: #ffffff;
+			color: #555555;
+		}
+		.bg-4 { 
+			background-color: #2f2f2f;
+			color: #fff;
+		}
+
+	</style>
+</head>
+
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</button>
+				<a class="navbar-brand" href="homepage.html">Spark Attack</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="homepage.html">HOME</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-th-list"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="providing_insights.html">Providing Insights</a></li>
+							<li><a href="word_clouds.html">Word Clouds</a></li>
+							<li><a href="sentiment_analysis.html">Sentiment Analysis</a></li>
+							<li><a href="discovering_relationships.html">Discovering Relationships</a></li> 
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<div class="container-fluid bg-1 text-center" style="margin-top: 50px;">
+		<h3>How do we do it?</h3>
+		<img src="images/spark_logo.png" class="img-responsive img-circle" style="display:inline" alt="Bird" width="350" height="350">
+		<h3>...of course</h3>
+	</div>
+
+	<div class="container-fluid bg-2 text-center" style="padding-bottom: 30px;">
+		<h3>What is Spark?</h3>
+		<p>Apache Spark is a fast and general engine for large-scale data processing.</p>
+		<a href="http://spark.apache.org/" class="btn btn-default btn-lg">
+			<span class="glyphicon glyphicon-search"></span> Search
+		</a>
+	</div>
+
+	<div class="container-fluid bg-3 text-center">    
+		<h3>About Spark</h3><br>
+		<div class="row">
+			<div class="col-sm-4">
+				<h4>Speed</h4>
+				<p>Run programs up to 100x faster than Hadoop MapReduce in memory, or 10x faster on disk.</p>
+				<img src="images/logistic_regression.png" class="img-responsive center-block" style="width:200px" alt="Image">
+			</div>
+			<div class="col-sm-4">
+				<h4>Ease of Use</h4>
+				<p>Write applications quickly in Java, Scala, Python, R. Combines SQL, streaming, and complex analytics.</p>
+				<img src="images/spark_stack.png" class="img-responsive center-block" style="width:200px" alt="Image">
+			</div>
+			<div class="col-sm-4">
+				<h4>Runs Everywhere</h4>
+				<p>Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3.</p>
+				<img src="images/hadoop_logo.png" class="img-responsive center-block"" style="width:200px" alt="Image">
+			</div>
+		</div>
+	</div>
+
+	<footer class="container-fluid bg-4 text-center">
+		<p>Created for Tech Challenge at <a href="https://www.uk.capgemini.com">Capgemini</a></p> 
+	</footer>
+	
+
+</body>
+
+</html>
+
