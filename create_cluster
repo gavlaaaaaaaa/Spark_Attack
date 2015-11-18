@@ -1,0 +1,4 @@
+gcloud beta dataproc clusters create spark1 --master-machine-type
+"n1-standard-2" --master-boot-disk-size-gb 500 --worker-machine-type "n1-standar
+d-2" --num-workers 2 --worker-boot-disk-size-gb 500
+
