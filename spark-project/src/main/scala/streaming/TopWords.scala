@@ -1,4 +1,4 @@
-package org.apache.spark.examples.streaming
+package scala.streaming
 
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.SparkContext._
