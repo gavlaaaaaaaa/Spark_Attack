@@ -109,7 +109,7 @@ val ApprenticeTweets= tweetText.filter(line => AppTerm.count(line.contains(_))>0
 
 
 // Filter on positive reference to get count output
-val PosCounts= ApprenticeTweets.filter(line => PosTerm.count(line.contains(_))>0).filter(line => PosTerm.count(line.contains(_))>0)
+val PosCounts= ApprenticeTweets.filter(line => PosTerm.count(line.contains(_))>0)
 val PosReduce = PosCounts.map(x => (x,1)).reduceByKey((x,y) => x+y)
 val PosSortedList = PosReduce.map(pair => pair.swap).transform(rdd => rdd.sortByKey(false))
 //PosSortedList.print()
@@ -121,7 +121,7 @@ TotalPosCounts.saveAsTextFiles("/home/training/log" +"/Total_Positive_Counts")
         
 
 //Filter on negative reference to get count output
-val NegCounts= ApprenticeTweets.filter(line => NegTerm.count(line.contains(_))>0).filter(line => NegTerm.count(line.contains(_))>0)
+val NegCounts= ApprenticeTweets.filter(line => NegTerm.count(line.contains(_))>0) 
 val NegReduce = NegCounts.map(x => (x,1)).reduceByKey((x,y) => x+y)
 val NegSortedList = NegReduce.map(pair => pair.swap).transform(rdd => rdd.sortByKey(false))
 //NegSortedList.print()
@@ -130,14 +130,11 @@ val TotalNegCounts = NegReduce.map{case (x,y) => ("negative count",y)}.reduceByK
 //Save the total counts
 TotalNegCounts.saveAsTextFiles("/home/training/log" +"/Total_Negative_Counts")
 TotalNegCounts.print()
-//println("Total number of positive tweets: ", TotalPosCounts)
-//println("Total number of negaive tweets: ", TotalNegCounts)
 
 
 
-//val sc = scc.sparkContext //new SparkContext(sparkConf, Seconds(30))
-//val sc = new SparkContext()
-//val accum = sc.accumulator(0, "My Accumulator")
+//val sc = ssc.sparkContext 
+//val accum = sc.accumulator(0)
 
 //TotalPosCounts.foreach(y => accum += y)
 

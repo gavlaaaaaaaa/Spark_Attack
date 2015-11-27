@@ -12,21 +12,17 @@ products:
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$17.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$18$$anonfun$apply$6.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$18.class
-   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$19$$anonfun$apply$7.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$19.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$2.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$20.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$21.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$22.class
+   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$23$$anonfun$apply$7.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$23.class
-   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$24$$anonfun$apply$8.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$24.class
-   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$25$$anonfun$apply$9.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$25.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$26.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$27.class
-   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$28.class
-   src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$29.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$3.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$4.class
    src/main/scala/streaming/Top_Words.scala -> target/scala-2.10/classes/scala/streaming/TopWords$$anonfun$5.class
@@ -66,20 +62,16 @@ class names:
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$18
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$18$$anonfun$apply$6
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$19
-   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$19$$anonfun$apply$7
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$2
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$20
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$21
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$22
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$23
+   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$23$$anonfun$apply$7
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$24
-   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$24$$anonfun$apply$8
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$25
-   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$25$$anonfun$apply$9
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$26
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$27
-   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$28
-   src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$29
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$3
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$4
    src/main/scala/streaming/Top_Words.scala -> scala.streaming.TopWords$$anonfun$5
