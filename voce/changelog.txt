@@ -1,0 +1,32 @@
+Voce
+http://voce.sourceforge.net
+Copyright (c) 2005-2008
+Tyler Streeter (http://www.tylerstreeter.net)
+
+
+Version 0.9.1
+February 9, 2006
+============================================================
+
+Release Notes
+----------------------------------------------------
+This maintenance release contains several threading bug fixes.
+
+Change Log
+----------------------------------------------------
+* 9-23-05: Fixed a bug in the SpeechRecognizer class that made it impossible to restart recognition after stopping it.
+
+* 9-21-05: Fixed a bug in the SpeechRecognizer class that caused a deadlock when disabling speech recognition.  The deadlock only became apparent after testing it on a multi-core machine.
+
+
+Version 0.9.0
+August 3, 2005
+============================================================
+
+Release Notes
+----------------------------------------------------
+Initial version.
+
+Change Log
+----------------------------------------------------
+Initial version.

@@ -1,0 +1,13 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Digits Grammar file
+ */
+
+grammar sentiment;
+
+public <miscellaneous> = (quit);
+
+public <positive> = (good | great | positive | wonderful | super | fast) * ;
+
+public <expression> = (really | not | no | well) <positive> * ;
