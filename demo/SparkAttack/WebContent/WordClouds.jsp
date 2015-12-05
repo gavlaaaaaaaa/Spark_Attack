@@ -84,21 +84,17 @@
 		<!-- form role="form" action="WordCloud" method="post"-->
 		<form role="form" id="sparkSearch"> <!--  onsubmit="myFunc"-->
 			
-			<div class="col-lg-8 ">
-				<div class="input-group">
-					<input type="text" class="form-control" id="searchTerms" name="searchTerms" placeholder="Search for...">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="submit" id="submit_btn"><span id="submit_icon" class="glyphicon glyphicon-search"></span></button>
-					</span>
-				</div>
-			</div>				
-			<div class="col-lg-4 ">
-				<div class="form-group">
-					<select class="form-control" id="sel1">
-						<option>Twitter</option>
-						<option>Voice</option>
-					</select>
-				</div>
+			<div class="col-lg-5 ">
+				<input type="text" class="form-control" id="searchTerms" name="searchTerms" placeholder="Search for..." >
+			</div>
+			<div class="col-lg-2 " style="height:100%;margin-bottom:2em;margin-top:-2em;">
+				<button class="btn btn-primary btn-lg center-block" type="submit" id="submit_btn" style="width:6em;height:6em;border-radius: 3em;border: 2px solid #66657f;"></button>
+			</div>
+			<div class="col-lg-5" >
+				<select class="form-control" id="sparkSource" name="sparkSource">
+					<option>Twitter</option>
+					<option>Voice</option>
+				</select>
 			</div>
 		</form>
 	</div>
@@ -121,7 +117,7 @@
 				<li>Removing non-alpha characters</li>
 			</ul>
 			<br>
-			We then perform a summation of all words and take the highest 10.
+			We then perform a summation of all words and take the highest 50.
 		</h4>
 	</div>
 

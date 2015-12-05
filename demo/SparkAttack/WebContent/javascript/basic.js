@@ -1,21 +1,29 @@
 var stopPolling = true;
 
 var pollRequest;
+var submitTxt="<b style=\"font-size: 2em;\">Go</b><span class=\"glyphicon glyphicon-flash\" style=\"font-size: 2em;\"></span>"
+var stopTxt="<span class=\"glyphicon glyphicon-remove\" style=\"font-size: 2em;\"></span>"
 
 
 $(document).ready(function(){
-	
+	$('#submit_btn').html(submitTxt);
+	$('#submit_btn').blur();
 	$('#sparkSearch').submit(function(){
-		if ($('#submit_icon').attr('class') == "glyphicon glyphicon-search") {
+		if ($('#submit_btn').html() == submitTxt) {
+			$('body').focus();
 			$.ajax({
 				url: 'WordCloud',
 				type: 'POST',
 				dataType:'text',
-				data: $('#sparkSearch').serialize(),
+				data: {
+					searchTerms:$("#searchTerms").val(),
+					sparkSource:$("#sparkSource option:selected").text()
+				},
 				success: function(data){
-					$('body').focus();
 					stopPolling = false;
-					$('#submit_icon').removeClass("glyphicon glyphicon-search").addClass("glyphicon glyphicon-remove");
+					$('#submit_btn').html(stopTxt);
+					$("#searchTerms").prop('disabled', true);
+					$("#sparkSource").prop('disabled', true);
 					loader({width: screen.width, height: 500, container: "#svgg", id: "loader"})();
 					poll();
 				}
@@ -26,25 +34,16 @@ $(document).ready(function(){
 		}
 		return false;
 	});
-	
+	$("#sparkSource").change(function(){
+		if ($("#sparkSource option:selected").text() == "Voice") {
+			$('#searchTerms').val('');
+			$("#searchTerms").prop('disabled', true);
+		}
+		else {
+			$("#searchTerms").prop('disabled', false);
+		}
+	});
 });
-
-/*
-function poll() {
-	xhrPolling = $.ajax({
-		url: "WordCloud",
-		type: 'POST',
-		dataType:'text',
-		success: function(data) {
-			console.log("polling");
-	//		$('#displayName').html('Your search is: ' + data);
-			updateData(data);
-		},
-		complete: setTimeout(function() {poll()}, 5000),
-		timeout: 2000
-	})
-};
-*/
 
 
 function poll() {
@@ -55,7 +54,6 @@ function poll() {
 		success: function(data) {
 			if (!stopPolling) {
 				setTimeout(function() {	if(stopPolling){return;}else{updateData(data); poll()}}, 5000);
-				//setTimeout(function() {console.log("Polling the WordCount"); poll()}, 5000);
 			}
 		}
 	})
@@ -63,14 +61,8 @@ function poll() {
 
 
 
-function myDrop() {
-	if( $("#dropdown").text() == "Twitter" ){
-		
-	}
-}
 
-
-$( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+	$( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
 	 
 	   var $target = $( event.currentTarget );
 	 
@@ -87,11 +79,12 @@ $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
 function clearSearch(){
 	pollRequest.abort();
 	$('#submit_icon').removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-search");
+	$('#submit_btn').html(submitTxt);
+	$("#searchTerms").prop('disabled', false);
+	$("#sparkSource").prop('disabled', false);
+	
 	$('#searchTerms').val('');
 	stopPolling = true;
-	//$("#svgg").attr("width", "500");
-	//$("#svgg").attr("height", "500");
-	//$("#loader").remove();
 	
 	
 	d3.select("#svgg").html("")
@@ -118,7 +111,6 @@ function clearSearch(){
 function updateData(data){	
 	var myjson = data;
 	
-//	if(myjson.length <= 0){
 	if(myjson.length <= 31){
 		return;
 	}
@@ -156,7 +148,6 @@ function updateData(data){
 		.enter().append("g")
 		.attr("class", "node")
 		.attr("transform", function(d) { return "translate(" + (d.x + width/2 - diameter/2) + "," + (d.y + 2) + ")"; });
-		//.attr("transform", function(d) { return "translate(" + (d.x + width/2 - diameter/2) + "," + (d.y + diameter/2) + ")"; });
 
 		node.append("title")
 			.text(function(d) { return d.className + ": " + format(d.value); });

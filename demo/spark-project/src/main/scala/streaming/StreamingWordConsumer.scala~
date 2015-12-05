@@ -38,15 +38,15 @@ object StreamingWordConsumer {
    
 
 
-
-    val hostname = args(0)
-	val port = args(1).toInt
-    val returnIP = args(2)
-	val returnPort = args(3).toInt
+	val checkpointDir = args(0)
+    val hostname = args(1)
+	val port = args(2).toInt
+    val returnIP = args(3)
+	val returnPort = args(4).toInt
 		val wordsToPrint = 60
 
 
-ssc.checkpoint("/home/training/Documents/Tech_Challenge/Spark_Attack/spark-project/checkpoints/")
+ssc.checkpoint("/home/training/Documents/Tech_Challenge/checkpoints/")
 
     val lines = ssc.socketTextStream(hostname, port)
 

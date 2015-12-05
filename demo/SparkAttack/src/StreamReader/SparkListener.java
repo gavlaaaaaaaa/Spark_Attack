@@ -42,17 +42,27 @@ public class SparkListener extends Thread {
 	}
 	
 	
-	public void runSpark(String searchTerms){
+	public void runSpark(String searchTerms, String sparkSource){
 		String scriptParams = String.valueOf(port);
 		
 		if(searchTerms != null){
 			scriptParams = scriptParams + " " + searchTerms.replace(",", " ");
 		}
 		
-		String[] args = new String[2];
+		String[] args = new String[3];
 		
-		args[0] = "/home/sparkattack100/demo/run_spark.sh";
-		args[1] = scriptParams;
+		args[0] = "/home/training/Desktop/spark-project/run_spark.sh";
+		
+		
+		if(sparkSource.equals("Twitter")){
+			args[1] = "1";
+		}
+		else {
+			args[1] = "2";
+		}
+		
+		args[2] = scriptParams;
+		
 		
 		try {
 			Runtime.getRuntime().exec(args);
@@ -69,7 +79,6 @@ public class SparkListener extends Thread {
 				isListening = false;
 			}
 		} catch (IOException e) {
-			//e.printStackTrace();
 			System.out.println("Error thrown");
 		}
 	}

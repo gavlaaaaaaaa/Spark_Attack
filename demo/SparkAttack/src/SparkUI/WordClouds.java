@@ -51,7 +51,7 @@ public class WordClouds extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+		
 		String stopSpark = request.getParameter("stopSpark");
 		response.setContentType("text/event-stream");
 		response.setCharacterEncoding("UTF-8");
@@ -73,15 +73,15 @@ public class WordClouds extends HttpServlet {
 		}
 		else {
 			String search = request.getParameter("searchTerms");
-			
+			String source = request.getParameter("sparkSource");
 			
 			if(sparkListener == null){
-				sparkListener = new SparkListener(2001);
+				sparkListener = new SparkListener(0);
 			}
 			
 			if(!sparkListener.isAlive()){
 				sparkListener.start();
-			//	sparkListener.runSpark(search);
+				sparkListener.runSpark(search, source);
 			}
 			
 			pw.write(sparkListener.getResult());

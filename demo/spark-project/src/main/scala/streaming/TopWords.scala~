@@ -84,13 +84,14 @@ val app_name = "Top_Words_"
 
 		val ip = args(4)
 		val port = args(5)
+		val checkpointDir = args(6)
 		val wordsToPrint = 60
 		val sessionTimeout = 50000 //120000
 
 
 		val Array(consumerKey, consumerSecret, accessToken, accessTokenSecret) = args.take(4)
 		val tokens = args.take(4)
-		val filters = args.drop(6)
+		val filters = args.drop(7)
 
 		println("Searches " + filters.deep.mkString("\n"))
 
@@ -123,7 +124,7 @@ val app_name = "Top_Words_"
 		System.setProperty("twitter4j.oauth.accessTokenSecret", accessTokenSecret)
 
 		
-		ssc.checkpoint("./checkpoints/")
+		ssc.checkpoint(checkpointDir)//"/home/training/Documents/Tech_Challenge/checkpoints/")
 
 
 		object auth {
